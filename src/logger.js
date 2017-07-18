@@ -9,7 +9,7 @@ export default function () {
                 logger[logLevel] = (...args) => {
                     let prefix = ''
                     prefix += options.prefix ? options.prefix + ' | ' : ''
-                    prefix += options.showLogLevel ? logLevel + ' | ' : ''
+                    prefix += options.showLogLevel ? logLevel + ' |' : ''
                     const formattedArguments = options.stringifyArguments ? args.map(a => JSON.stringify(a)) : args
                     print(logLevel, prefix, formattedArguments)
                 }
@@ -21,16 +21,25 @@ export default function () {
     }
 
     function print (logLevel, prefix, formattedArguments) {
-        if (logLevel === 'warn' || logLevel === 'error' || logLevel === 'fatal') {
-            console[logLevel === 'fatal' ? 'error' : logLevel](prefix, ...formattedArguments)
-        } else if (logLevel === 'info') {
-          console.info('%c ', 'color: #03A9F4;', prefix, ...formattedArguments)
-        } else if (logLevel === 'debug') {
-          console.debug('%c ', 'color: #264653;', prefix, ...formattedArguments)
-        } else {
-          console.log('%c ', 'color: #000000;', prefix, ...formattedArguments)
-          // console.log(prefix, ...formattedArguments)
-        }
+      switch(logLevel) {
+        case 'warn':
+          console.warn('🚧', prefix, ...formattedArguments)
+          break;
+        case 'error':
+          console.error('⛔', prefix, ...formattedArguments)
+          break;
+        case 'fatal':
+          console.error('⛔', prefix, ...formattedArguments)
+          break;
+        case 'debug':
+          console.debug('%c🔧 ' + prefix, 'color: #9E9E9E;', ...formattedArguments)
+          break;
+        case 'info':
+          console.info('%c🔵 ' + prefix, 'color: #03A9F4;', ...formattedArguments)
+          break;
+        default:
+          console.log(prefix, ...formattedArguments)
+      }
     }
 
     function validateOptions (options, logLevels) {
