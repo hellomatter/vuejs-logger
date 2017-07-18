@@ -7,7 +7,9 @@ export default function () {
         logLevels.forEach(logLevel => {
             if (logLevels.indexOf(logLevel) >= logLevels.indexOf(options.logLevel)) {
                 logger[logLevel] = (...args) => {
-                    const prefix = options.showLogLevel ? logLevel + ' | ' : ''
+                    let prefix = ''
+                    prefix += options.prefix ? options.prefix + ' | ' : ''
+                    prefix += options.showLogLevel ? logLevel + ' | ' : ''
                     const formattedArguments = options.stringifyArguments ? args.map(a => JSON.stringify(a)) : args
                     print(logLevel, prefix, formattedArguments)
                 }
@@ -34,6 +36,9 @@ export default function () {
             return false
         }
         if (options.showLogLevel && typeof options.showLogLevel !== 'boolean') {
+            return false
+        }
+        if (options.prefix && typeof options.prefix !== 'string') {
             return false
         }
         return true

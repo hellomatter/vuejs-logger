@@ -13,6 +13,7 @@ describe('Logger.js', () => {
                 logLevel: 'debug',
                 stringifyByDefault: false,
                 showLogLevel: false,
+                prefix: 'testPrefix'
             }
 
             Vue.use({install}, options)
@@ -101,6 +102,7 @@ describe('Logger.js', () => {
                 logLevel: 'debug',
                 stringifyByDefault: false,
                 showLogLevel: false,
+                prefix: 'testPrefix'
             }, logLevels)).to.equal(true)
         })
 
@@ -109,18 +111,28 @@ describe('Logger.js', () => {
                 logLevel: 'debug',
                 stringifyArguments: 'TEST',
                 showLogLevel: false,
+                prefix: 'testPrefix',
             }, logLevels)).to.equal(false)
 
             expect(validateOptions({
                 logLevel: 'debug',
                 stringifyArguments: false,
                 showLogLevel: 'TEST',
+                prefix: 'testPrefix',
             }, logLevels)).to.equal(false)
 
             expect(validateOptions({
                 logLevel: 'TEST',
                 stringifyArguments: false,
                 showLogLevel: false,
+                prefix: 'testPrefix',
+            }, logLevels)).to.equal(false)
+            
+            expect(validateOptions({
+                logLevel: 'TEST',
+                stringifyArguments: false,
+                showLogLevel: false,
+                prefix: true,
             }, logLevels)).to.equal(false)
         })
     })
