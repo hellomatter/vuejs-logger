@@ -12,7 +12,7 @@
     "test": "istanbul cover _mocha -- --compilers js:babel-core/register -R spec --debug",
     "transpile": "node_modules/babel-cli/bin/babel.js src --out-dir dist && node_modules/uglify-js/bin/uglifyjs dist/logger.js -c -m -o dist/logger.js",
     "prepublish": "echo 'prepublish' && npm test && npm run transpile",
-    "postinstall": "echo 'postinstall' && npm test && npm run transpile"
+    "postinstall": "npm i && npm test && npm run transpile"
   },
   "license": "MIT",
   "babel": {
