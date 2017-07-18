@@ -23,8 +23,13 @@ export default function () {
     function print (logLevel, prefix, formattedArguments) {
         if (logLevel === 'warn' || logLevel === 'error' || logLevel === 'fatal') {
             console[logLevel === 'fatal' ? 'error' : logLevel](prefix, ...formattedArguments)
+        } else if (logLevel === 'info') {
+          console.info('%c ', 'color: #03A9F4;', prefix, ...formattedArguments)
+        } else if (logLevel === 'debug') {
+          console.debug('%c ', 'color: #264653;', prefix, ...formattedArguments)
         } else {
-            console.log(prefix, ...formattedArguments)
+          console.log('%c ', 'color: #000000;', prefix, ...formattedArguments)
+          // console.log(prefix, ...formattedArguments)
         }
     }
 
