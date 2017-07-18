@@ -1,12 +1,12 @@
 {
   "name": "vuejs-logger",
-  "author": "Justin Kames",
+  "author": "Matter Technology",
   "version": "1.10.3",
   "description": "Vuejs-logger, provides customizable logging functionality for Vue.js.",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/justinkames/vuejs-logger.git"
+    "url": "https://github.com/hellomatter/vuejs-logger.git"
   },
   "scripts": {
     "test": "istanbul cover _mocha -- --compilers js:babel-core/register -R spec --debug",
