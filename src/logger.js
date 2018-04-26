@@ -17,7 +17,7 @@ export default (function () {
               if (logLevels.indexOf(logLevel) >= logLevels.indexOf(options.logLevel)) {
                   logger[logLevel] = (...args) => {
                       let methodName = getMethodName()
-                      const methodNamePrefix = options.showMethodName ? methodName + ` ${options.separator} ` : ''
+                      const methodNamePrefix = options.showMethodName ? methodName + ` ${options.separator}` : ''
                       const logLevelPrefix = options.showLogLevel ? logLevel + ` ${options.separator}` : ''
                       const formattedArguments = options.stringifyArguments ? args.map(a => JSON.stringify(a)) : args
                       print(logLevel, logLevelPrefix, methodNamePrefix, formattedArguments, options.showConsoleColors)
@@ -33,23 +33,23 @@ export default (function () {
 
     function print (logLevel = false, logLevelPrefix = false, methodNamePrefix = false, formattedArguments = false, showConsoleColors = false) {
         switch(logLevel) {
-          case 'debug':
-            console.debug('%c🔧 ' + logLevelPrefix, 'color: #9E9E9E;', methodNamePrefix, ...formattedArguments)
-            break;
-          case 'info':
-            console.info('%c🔷 ' + logLevelPrefix, 'color: #03A9F4;', methodNamePrefix, ...formattedArguments)
-            break;
-          case 'warn':
-            console.warn('⚠️', logLevelPrefix, methodNamePrefix, ...formattedArguments)
-            break;
-          case 'error':
-            console.error('⛔', logLevelPrefix, methodNamePrefix, ...formattedArguments)
-            break;
-          case 'fatal':
-            console.error('💣', logLevelPrefix, methodNamePrefix, ...formattedArguments)
-            break;
-          default:
-            console.log(logLevelPrefix, methodNamePrefix, ...formattedArguments)
+            case 'debug':
+                console.debug('%c🔧 ' + logLevelPrefix, 'color: #9E9E9E;', methodNamePrefix, ...formattedArguments)
+                break;
+            case 'info':
+                console.info('%c🔷 ' + logLevelPrefix, 'color: #03A9F4;', methodNamePrefix, ...formattedArguments)
+                break;
+            case 'warn':
+                console.warn('⚠️', logLevelPrefix, methodNamePrefix, ...formattedArguments)
+                break;
+            case 'error':
+                console.error('⛔', logLevelPrefix, methodNamePrefix, ...formattedArguments)
+                break;
+            case 'fatal':
+                console.error('💣', logLevelPrefix, methodNamePrefix, ...formattedArguments)
+                break;
+            default:
+                console.log(logLevelPrefix, methodNamePrefix, ...formattedArguments)
         }
 
     }
