@@ -1,7 +1,7 @@
 {
   "name": "vuejs-console-logger",
   "author": "Matter Technology",
-  "version": "1.10.4",
+  "version": "1.10.5",
   "description": "Fork of justinkames/vuejs-logger. Provides customizable logging functionality for Vue.js.",
   "main": "dist/index.js",
   "repository": {
